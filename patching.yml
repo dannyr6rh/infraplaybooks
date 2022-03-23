@@ -1,0 +1,25 @@
+---
+- name: hardening nodos rhel
+  hosts: all
+  become: true
+  vars: 
+    - harden_firewall: false
+    - harden_time: false
+    - harden_ssh: false
+    
+  tasks: 
+    - name: configurar firewall
+      when: harden_firewall |  bool
+      include_role:
+        name: linux-system-roles.firewall
+        
+    - name: configurar timesync
+      when: harden_time | bool
+      include_role:
+        name:  linux-system-roles.timesync
+        
+    - name: configurar ssh
+      when: harden_ssh | bool
+      include_role:
+        name:  dev-sec.ssh-hardening
+            
