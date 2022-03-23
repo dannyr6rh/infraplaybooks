@@ -1,0 +1,12 @@
+---
+- hosts: all
+  tasks:
+   - name: installation baseline compliance
+     yum: 
+        name:
+          -sysstat
+          -httpd
+          -vim
+          -unzip
+          -curl
+        state: latest
