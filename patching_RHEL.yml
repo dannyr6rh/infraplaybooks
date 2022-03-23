@@ -1,0 +1,21 @@
+---
+- name: aplicar parches excepto kernel
+  host: all
+  become: true
+  gather_facts: false
+  
+  tasks:
+  - name: upgrade de todos los paquetes menos los paquetes de kernel
+    yum: 
+      name: '*'
+      state: latest
+      exclude: kernel*
+    tags: all
+    
+  - name: upgrade de todos los paquetes de seguridad menos del kernel
+    yum:
+      name: '*'
+      state: latest
+      security: true
+      exclude: kernel*
+     tags: security
