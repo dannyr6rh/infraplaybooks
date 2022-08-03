@@ -63,7 +63,7 @@
 # Automatic system reboot was suppressed for this playbook.
 # This play lists the systems that need to be rebooted manually for the changes to take effect.
 - name: Reboot reminder
-  hosts: "aap2,rhel79ssd.dytest123.com,rhel85ssd2.dytest123.com,rhel8vnc.dytest123.com,rhelworkstation.localdomain,rhvmgr01.lab.local,server1a,ssbastion.comm.ibm.gsc,vm-232-119.vmware.gsslab.pnq2.redhat.com"
+  hosts: "all"
   gather_facts: false
   vars:
     insights_signature_exclude: /hosts,/vars/insights_signature
@@ -96,7 +96,7 @@
         - insights_needs_reboot
 
 - name: run insights
-  hosts: "aap2,rhel79ssd.dytest123.com,rhel85ssd2.dytest123.com,rhel8vnc.dytest123.com,rhelworkstation.localdomain,rhvmgr01.lab.local,server1a,ssbastion.comm.ibm.gsc,vm-232-119.vmware.gsslab.pnq2.redhat.com"
+  hosts: "all"
   become: true
   gather_facts: false
   vars:
